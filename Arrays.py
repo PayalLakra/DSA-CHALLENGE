@@ -1,4 +1,4 @@
-'''*****Second Largest element of an Array*****'''
+''' *****   Second Largest element of an Array  *****   '''
 
 # Goal: The Given an array of positive integers arr[] of size n, the task is to find second largest distinct element in the array.
 # Note: If the second largest element does not exist, return -1.
@@ -76,3 +76,23 @@ def push_zero(arr):
 arr = [0,1,1,6,4,0,6,9,0]
 push_zero(arr)
 print(arr)
+
+''' *****   Reverse an Array    *****   '''
+# You are given an array of integers arr[]. Your task is to reverse the given array.
+
+#Time Complexity : O(n)
+def reverse_array(arr):
+    rev_arr = arr[::-1]
+    return rev_arr
+
+arr = [1,2,5,9,3,4,5]
+print(reverse_array(arr))
+
+
+#Time Complexity : O(n)
+def array_rev(arr):
+    arr.reverse()
+    return arr
+
+arr = [1,2,5,9,3,4,5]
+print(array_rev(arr))
