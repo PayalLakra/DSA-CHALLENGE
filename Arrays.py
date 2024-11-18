@@ -96,3 +96,29 @@ def array_rev(arr):
 
 arr = [1,2,5,9,3,4,5]
 print(array_rev(arr))
+
+''' *****   Rotate an Array *****   '''
+#Given an unsorted array arr[]. Rotate the array to the left (counter-clockwise direction) by d steps, where d is a positive integer.
+
+# Reversal Algorithm with Time Complexity : O(n)
+
+def rotate_array(arr,d):
+    n = len(arr)
+    if n < d:
+        print("Not Possible to Rotate")
+        return arr
+    else:
+        reverse(arr, 0, d-1)      #Reverse the first d elements
+        reverse(arr, d, n-1)      #Reverse the remaining n-d elements
+        reverse(arr, 0, n-1)      #Reverse the entire array
+        return arr
+
+def reverse(arr, start, end):
+    while start < end:
+        arr[start], arr[end] = arr[end] , arr[start]
+        start += 1
+        end -= 1
+
+arr = [1,2,3,4,5,6,7,8,9]
+d = 3
+print(rotate_array(arr,d))
