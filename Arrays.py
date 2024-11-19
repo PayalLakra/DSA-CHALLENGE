@@ -136,3 +136,55 @@ print(rotate_array(arr,d))
 # -> Minimize the suffix part by reversing the array from pivot + 1 till n.
 
 #Time Complexity of this is - O(n)
+def nextPermutation(arr):
+        # Python Program to find the next permutation by generating only next
+        n = len(arr)
+        
+        # Find the pivot index
+        pivot = -1
+        for i in range(n - 2, -1, -1):
+            if arr[i] < arr[i + 1]:
+                pivot = i
+                break
+        
+        # If pivot point does not exist, reverse the whole array
+        if pivot == -1:
+            arr.reverse()
+            return
+    
+        # Find the element from the right that is greater than pivot
+        for i in range(n - 1, pivot, -1):
+            if arr[i] > arr[pivot]:
+                arr[i], arr[pivot] = arr[pivot], arr[i]
+                break
+    
+        # Reverse the elements from pivot + 1 to the end in place
+        left, right = pivot + 1, n - 1
+        while left < right:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+
+arr = [1,53,8,2,7]
+nextPermutation(arr)
+print(arr)
+
+#Other way with time complexity: O(n!)
+import itertools
+
+def nextPermutation(arr):
+    # Find all permutations of the array and sort them
+    perms = sorted(itertools.permutations(arr))
+    
+    # Find the index of the current permutation
+    current_index = perms.index(tuple(arr))
+    
+    # Return the next permutation if it exists; otherwise, return the first permutation (sorted order)
+    next_perm = perms[current_index + 1] if current_index + 1 < len(perms) else perms[0]
+    
+    # Convert the tuple back to a list and update arr
+    arr[:] = list(next_perm)
+
+arr = [1, 53, 8, 2, 7]
+nextPermutation(arr)
+print(arr)
