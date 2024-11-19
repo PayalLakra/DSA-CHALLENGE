@@ -122,3 +122,17 @@ def reverse(arr, start, end):
 arr = [1,2,3,4,5,6,7,8,9]
 d = 3
 print(rotate_array(arr,d))
+
+''' *****   Next Permutation   *****   '''
+# Given an array of integers arr[] representing a permutation, implement the next permutation that rearranges the numbers into the lexicographically next greater permutation.
+# If no such permutation exists, rearrange the numbers into the lowest possible order (i.e., sorted in ascending order). 
+
+# Steps to do:
+
+# -> Iterate over the given array from end and find the first index (pivot) which doesn’t follow property of non-increasing suffix, (i.e,  arr[i] < arr[i + 1]).
+# -> If pivot index does not exist, then the given sequence in the array is the largest as possible. So, reverse the complete array. For example, for [3, 2, 1], the output would be [1, 2, 3]
+# -> Otherwise, Iterate the array from the end and find for the successor (rightmost greater element) of pivot in suffix.
+# -> Swap the pivot and successor
+# -> Minimize the suffix part by reversing the array from pivot + 1 till n.
+
+#Time Complexity of this is - O(n)
