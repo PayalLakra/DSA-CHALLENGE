@@ -188,3 +188,42 @@ def nextPermutation(arr):
 arr = [1, 53, 8, 2, 7]
 nextPermutation(arr)
 print(arr)
+
+""" *****   Majority of Element(n/3)   *****   """
+# You are given an array of integer arr[] where each number represents a vote to a candidate.
+# Return the candidates that have votes greater than one-third of the total votes
+# If there's not a majority vote, return an empty array. 
+
+#Time Complexity:O(n)
+
+def majority(arr):
+    n = len(arr)
+    freq = {}
+    result = []
+    for element in arr:         #Find frequency of each number
+        freq[element] = freq.get(element,0) + 1
+    
+    for element, count in freq.items():
+        if count > (n // 3):
+            result.append(element)
+
+    result.sort()
+    return result
+
+arr = [3,7,7,7,9,9,9,1]
+result = majority(arr)
+print(result)
+
+# Second way with time complexity : O(n logn)
+from collections import Counter
+
+def maj_element(arr):
+    n = len(arr)
+    frequency = Counter(arr)
+    result = [element for element, count in frequency.items in arr if count > (n//2)]
+    result.sort()
+    return result
+
+arr = [3,7,7,7,9,9,9,1]
+result = majority(arr)
+print(result)
