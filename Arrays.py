@@ -227,3 +227,22 @@ def maj_element(arr):
 arr = [3,7,7,7,9,9,9,1]
 result = majority(arr)
 print(result)
+
+''' *****   Stock Buy and Sell  *****   '''
+#The cost of stock on each day is given in an array price[]. 
+#Each day you may decide to either buy or sell the stock at price[i], you can even buy and sell the stock on the same day. 
+# Find the maximum profit that you can get.
+
+#Time Complexity : O(n)
+
+def max_profit(prices):
+    result = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i - 1]:
+            result += prices[i] - prices[i - 1]
+
+    return result
+
+if __name__ == "__main__":
+    prices = [100, 180, 260, 310, 40, 535, 695]
+    print(max_profit(prices))
