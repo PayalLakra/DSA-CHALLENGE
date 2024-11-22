@@ -246,3 +246,22 @@ def max_profit(prices):
 if __name__ == "__main__":
     prices = [100, 180, 260, 310, 40, 535, 695]
     print(max_profit(prices))
+
+""" *****Stock Buy and Sell – Max one Transaction Allowed *****   """
+# The task is to find the maximum profit possible by buying and selling the stocks on different days when at most one transaction is allowed. 
+# Here one transaction means 1 buy + 1 Sell.
+# If it is not possible to make a profit then return 0.
+
+def max_one_profit(price):
+    min_price = price[0]
+    result = 0
+
+    for i in range(1,len(price)):
+        min_price = min(min_price, price[i])      # Update the minimum value seen so far if we see smaller
+
+        result = max(result, price[i] - min_price)# Update result if we get more profit 
+    
+    return result
+
+price = [7, 10, 1, 3, 6, 9, 2]
+print(max_one_profit(price))
