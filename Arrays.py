@@ -265,3 +265,35 @@ def max_one_profit(price):
 
 price = [7, 10, 1, 3, 6, 9, 2]
 print(max_one_profit(price))
+
+'''Minimize the Heights'''
+#Given an array arr[] denoting heights of N towers and a positive integer K.
+#For each tower, you must perform exactly one of the following operations exactly once.
+
+#  -> Increase the height of the tower by K
+#  -> Decrease the height of the tower by K
+#Find out the minimum possible difference between the height of the shortest and tallest towers after you have modified each tower.
+
+
+def get_min_diff(arr, k):
+    n = len(arr)
+    arr.sort()
+    
+    initial_diff = arr[-1] - arr[0]
+    result = initial_diff
+    
+    for i in range(n - 1):
+        max_height = max(arr[-1] - k, arr[i] + k)
+        min_height = min(arr[0] + k, arr[i + 1] - k)
+        
+        if min_height < 0:
+            continue
+        
+        result = min(result, max_height - min_height)
+    
+    return result
+
+arr = [3, 9, 12, 16, 20]
+k = 3
+diff = get_min_diff(arr, k)
+print(diff)
