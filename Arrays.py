@@ -297,3 +297,18 @@ arr = [3, 9, 12, 16, 20]
 k = 3
 diff = get_min_diff(arr, k)
 print(diff)
+
+''' *****    KADANE'S ALGOROTIHM ******'''
+# Given an integer array arr[]. You need to find the maximum sum of a subarray.
+
+def maximum_arr(arr):
+    result = arr[0]
+    max_end = arr[0]
+
+    for i in range(1,len(arr)):
+        max_end = max(max_end + arr[i] , arr[i])
+        result = max(result, max_end)
+    return result
+
+arr = [2, 3, -8, 7, -1, 2, 3]
+print(maximum_arr(arr))
