@@ -312,3 +312,34 @@ def maximum_arr(arr):
 
 arr = [2, 3, -8, 7, -1, 2, 3]
 print(maximum_arr(arr))
+
+'''Maximum Product Subarray'''
+#Given an array arr[] that contains positive and negative integers (may contain 0 as well). 
+# Find the maximum product that we can get in a subarray of arr.
+
+# Time Complexity : O(n)
+
+def max_product(arr):
+    n = len(arr)
+    max_pro = float('-inf')
+
+    lefttoright = 1
+    righttoleft = 1
+
+    for i in range(n):
+        if lefttoright == 0:
+            lefttoright = 1
+        elif righttoleft == 0:
+            righttoleft = 1
+
+        lefttoright *= arr[i]
+
+        j = n-i-1
+        righttoleft *= arr[j]
+
+        max_pro = max(lefttoright, righttoleft, max_pro)
+
+    return max_pro
+
+arr = [-2, 6, -3, -10, 0, 2]
+print(max_product(arr))
